@@ -1,0 +1,90 @@
+<html>
+  <form name=f method=post>
+		<table cellpadding=10 cellspacing=10>      <!-- table for getting input from radio button-->
+			<tr>
+				<td><input type=radio name=r value="circle">circle<br>
+					<td><input type=radio name=r value="square">square<br>
+			<tr>
+					<td colspan=2 align=center>SPEED<sub>(millisecond)</sub><input type=number name=s ><br>
+			<tr>
+					<td colspan=2 align=center><input type=button name=button value=Submit onclick=fun()>
+					<td><div  style="  position: absolute;  ;width: 20px; height:20px; padding: 0px; border: 0px;" id="a" ><img src="star_on.gif"></img></div>
+			</table>
+	</form>
+</html>
+<script>
+function fun()
+{
+var speed=f.s.value;
+var str="";
+if(f.r[0].checked==false && f.r[1].checked==false)// validating the radio button
+str="select any option";
+if(speed=="")
+str+=" and enter the value of speed";
+if(str=="")
+{
+if(f.r[0].checked)
+{
+	var imgAngle = 0;
+	var centerx = document.body.offsetWidth / 2;   // center of screen
+	var centery = document.body.offsetHeight / 2;
+	function circle()                              //for a div to rotate in circular path
+	{
+	var x=centerx + (150 * Math.cos(imgAngle));
+	var y=centery + (150 * Math.sin(imgAngle));
+    document.getElementById("a").style.left = x + "px";
+    document.getElementById("a").style.top =y + "px";
+
+    imgAngle = imgAngle + 0.1;
+
+    setTimeout(circle,speed);
+	}
+	circle();
+
+}
+else if(f.r[1].checked)
+{
+var centerX = document.body.offsetWidth /3;   // center of screen
+var centerY = document.body.offsetHeight/3 ;
+var x=centerX;
+var y=centerY;
+var set=1;
+var k=1;
+function square()                            //for a div to rotate in square path
+{
+document.getElementById("a").style.left=x+"px";
+document.getElementById("a").style.top=y+"px";
+if(set==1)
+{
+x++; 
+k++;
+}
+else if(set==2)
+{
+y++; 
+k++;
+}
+else if(set==3)
+{
+x--; 
+k++;
+}
+else if(set==4)
+{
+y--; 
+k++;
+}
+else if(set>4)
+set=set-5;
+
+if(k%200==0)
+set++;
+setTimeout(square,speed/10);
+}
+square();
+}
+}
+else alert(str);
+}
+
+</script>
