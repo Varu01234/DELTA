@@ -1,0 +1,27 @@
+<html>
+<body bgcolor="red">
+<div  style="  position: absolute;  width: 20px; height:20px; padding: 0px; border: 0px;" id="a" ><img src="star_on.gif"></img></div>
+<body>
+</html>
+<script>
+
+ 
+var imgAngle = 0;
+var centerx = document.body.offsetWidth /2;   // center of screen
+var centery = document.body.offsetHeight / 2;
+
+
+
+
+function circle() {
+  var x=centerx + (100 * Math.cos(imgAngle));
+	var y=centery + (100 * Math.sin(imgAngle));
+    document.getElementById("a").style.left = x + "px";
+    document.getElementById("a").style.top =y + "px";
+
+    imgAngle = imgAngle + 0.1;
+
+    setTimeout(circle,100);
+}
+circle();
+</script>
