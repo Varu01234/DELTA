@@ -1,0 +1,242 @@
+<html>
+<form name=f method=get>
+<head>
+  
+	<link rel="stylesheet" media="screen, print, handheld" type="text/css" href="cal.css" />
+	<form name=f method=post>
+		<table class="calculator" id='calc' border=1>
+			<tr >
+				
+				<td class="calc_text" colspan=3 align=center ><input class="res" id="result" type=text  readonly=true name=t onkeydown=key_detect_calc('calc',event) style="height:40;width:300;" ><sub>in radians</sub></input>
+				<td class="calc_button"> <input  class="class_bt class_buttonr class_buttonb" type=button name="m" value="C" style="height:50;width:50" onclick=func('C')></input>
+				<td class="calc_button" ><input type=button name=eval value="Expres.evaluation" class="class_bt class_buttonr class_buttonb" style="height:50;width:70" onclick=func('eval')></input>
+				<td class="clac_button"><input type=button name="!" value="Fact!" class="class_bt class_buttonr class_buttonb" style="height:50;width:70" onclick=func('!')></input>
+			</tr>
+			<tr>
+				<td class="calc_button"><input class="class_bt" type=button name="a" value="1" style="height:50;width:50" onclick=func(1)></input>
+				<td class="calc_button"><input class="class_bt" type=button name="b" value="2" style="height:50;width:50" onclick=func(2)></input>
+				<td class="calc_button"><input class="class_bt" type=button name="c" value="3" style="height:50;width:50" onclick=func(3)></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name="d" value="+" style="height:50;width:50" onclick=func('+')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='sin' value='Sin(rd)' style="height:50;width:70" onclick=func('sin(')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='tan' value='Tan(rd)' style="height:50;width:70" onclick=func('tan(')></input>
+			</tr>
+			<tr>
+				<td class="calc_button"><input class="class_bt" type=button name="e" value="4" style="height:50;width:50" onclick=func(4)></input>
+				<td class="calc_button"><input class="class_bt" type=button name="f" value="5" style="height:50;width:50" onclick=func(5)></input>
+				<td class="calc_button"><input class="class_bt" type=button name="g" value="6" style="height:50;width:50" onclick=func(6)></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name="h" value="-" style="height:50;width:50" onclick=func('-')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='cos' value='Cos(rd)' style="height:50;width:70" onclick=func('cos(')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='sqrt' value='sqrt' style="height:50;width:70" onclick=func('sqrt(')></input>
+				
+			</tr>
+			
+			<tr>
+				<td class="calc_button"><input class="class_bt" type=button name="i" value="7" style="height:50;width:50" onclick=func(7)></input>
+				<td class="calc_button"><input class="class_bt" type=button name="j" value="8" style="height:50;width:50" onclick=func(8)></input>
+				<td class="calc_button"><input class="class_bt" type=button name="k" value="9" style="height:50;width:50" onclick=func(9)></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name="l" value="*" style="height:50;width:50" onclick=func('*')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='log' value='Log()' style="height:50;width:70" onclick=func('log(')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='b1' value='(' style="height:50;width:70" onclick=func('(')></input>
+			</tr>
+			<tr>
+				<td class="calc_button"> <input class="class_bt" type=button name="m" value="." style="height:50;width:50" onclick=func('.')></input>
+				<td class="calc_button"><input class="class_bt" type=button name="n" value="0" style="height:50;width:50" onclick=func(0)></input>
+				<td class="calc_button"><input class="class_bt " type=button name="o" value="=" style="height:50;width:50" onclick=func('=')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name="p" value="/" style="height:50;width:50" onclick=func('/')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='exp' value='Exp()' style="height:50;width:70" onclick=func('exp(')></input>
+				<td class="calc_button"><input class="class_bt class_buttonr class_buttonb" type=button name='b2' value=')' style="height:50;width:70" onclick=func(')')></input>
+			</tr>
+		</table>
+	</form>
+</head>
+</form>
+</html>
+<script>
+
+var set=true;
+var n;
+var result;
+var l='';
+var x='';
+function func(n)
+{
+		
+		if(n=='C')
+		{
+			l='';
+			x='';
+			f.t.value=l;
+		}
+		else if(n=='.')                      // for decimal
+		{	
+			x=x+n;
+			l=l+n;
+			f.t.value=l;
+		}
+		
+		else if(n=='=')
+		{	
+			result=eval(x);
+			f.t.value=result;
+		}
+		else if(n=='+')
+		{	
+			x=x+n;
+			l=l+n;
+			f.t.value=l;
+			
+		}
+		else if(n=='-')
+		{
+			x=x+n;
+			l=l+n;
+			f.t.value=l;
+		}
+		else if(n=='*')
+		{	
+			x=x+n;
+			l=l+n;
+			f.t.value=l;
+		}
+		else if(n=='/')
+		{
+			x=x+n;
+			l=l+n;
+			f.t.value=l;
+		}
+		else if(n=='eval')
+		{
+			
+			f.t.value=eval(x);
+			
+		}
+		else if(n=='!')					//for factorial
+		{	
+			index=0;
+			for(var i=0;i<l.length;i++)
+			{
+				if(isNaN(l[i]))
+				index=i;
+			}
+			if(index==0)
+			{
+				m=parseInt(l);
+				for(i=1;i<m;i++)
+				{
+					l=l*i;
+				}
+				f.t.value=l;
+			}
+			else f.t.value='not defined';
+		}
+		
+		else if(n=='sin(')
+		{
+			x=x+'Math.sin(';
+			l=l+n;
+			f.t.value=l;
+		}
+		
+		else if(n=='cos(')
+		{	
+			x=x+'Math.cos(';
+			l=l+n;
+			f.t.value=l;
+		}
+		
+		else if(n=='log(')
+		{	
+			x=x+'Math.log(';
+			l=l+n;
+			f.t.value=l;
+		}
+		
+		else if(n=='exp(')
+		{	
+			x=x+'Math.exp(';
+			l=l+n;
+			f.t.value=l;
+		}
+		else if(n=='tan(')
+		{	
+			x=x+'Math.tan(';
+			l=l+n;
+			f.t.value=l;
+		}
+		else if(n=='sqrt(')
+		{
+			x=x+'Math.sqrt(';
+			l=l+n;
+			f.t.value=l;
+		}
+		else if(n=='(')
+		{	
+			x=x+n;
+			l=l+n;
+			f.t.value=l;
+		}
+		else if(n==')')
+		{
+			x=x+n;
+			l=l+n;
+			f.t.value=l;
+		}
+		else
+		{	
+			
+				if(set==true)
+				{
+					x=n.toString();
+					l=n.toString();
+					f.t.value=l;
+				}
+				else
+				{
+					m=n.toString();
+					x=x+m;
+					l=l+m;
+					f.t.value=l;
+				}
+			
+			
+		}
+set=false;	
+}
+
+function key_detect_calc(id,evt)             //responding to keyboard keys
+{
+        if(evt.keyCode>95 &&  evt.keyCode<106)
+		{
+			var n=(evt.keyCode)-96;
+			func(n);
+		}
+		else if((evt.keyCode)>47 && (evt.keyCode)<58)
+		{
+			var n=(evt.keyCode)-48;
+			func(n);
+		}
+		else if((evt.keyCode)==107)
+		{
+			func('+');
+		}
+		else if((evt.keyCode)==109)
+		{
+			func('-');
+		}
+		else if((evt.keyCode)==106)
+		{
+			func('*');
+		}
+		else if((evt.keyCode)==111)
+		{
+			func('/');
+		}
+		else if((evt.keyCode)==187)
+		{
+			func('=');
+		}
+		return true;
+}
+
+
+</script>
